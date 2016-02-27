@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.wrapper {
+  height: 100%;
+}
+section {
+  height: 100%;
+}
+
+.column {
+  width: 30%;
+  height: 100%;
+  float: left;
+  padding: 10px;
+}
+
+.column.left {
+  background-color: gray;
+
+}
+
+.column.middle {
+  background-color: purple;
+
+}
+
+.column.right {
+  background-color: green;
+}
+
+.cards {
+  width: 100%;
+  height: 100px;
+  background-color: white;
+}
