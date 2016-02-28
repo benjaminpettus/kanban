@@ -1,19 +1,19 @@
-angular.module('myApp', []);
+angular.module('myApp', ['ngRoute']);
 
 var myApp = angular.module('myApp');
 
 myApp
-  .config(function () {
+  .config(function ($routeProvider) {
 
-  // $routeProvider
-  //   .when('/', {
-  //     templateUrl: 'public/index.html'
-  //   });
+  $routeProvider
+    .when('/',  {
+      templateUrl: 'index.html',
+      controller: 'CardController'
+    });
   })
     .run([
       '$rootScope',
-      'APP_Version',
-      function ($rootScope, APP_VERSION) {
+      function ($rootScope) {
       //start application
-      $rootScope.version = APP_VERSION;
+      // $rootScope.version = APP_VERSION;
     }]);

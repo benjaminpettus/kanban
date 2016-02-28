@@ -3,6 +3,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
 var db = require('./models');
+var Kanban = db.Kanban;
+var PORT = 3000;
 
 var app = express();
 
@@ -11,21 +13,33 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //main page
 app.get('/api', function (req, res) {
- res.send('string of something');
+ Kanban.findAll()
+  .then(function (result){
+    res.json(result);
+  });
+
 });
 
 //saving a new card to database
 app.post('/api', function (req, res) {
- 
-  res.json(req.body);
+Kanban.create(req.body)
+  .then(function (result) {
+    res.json(req.body);
+    
+  });
 });
 
 
 
 
 
-
-
-var server = app.listen(3000, function() {
-  console.log('Listening to port', server.address().port);
+db.sequelize
+  .sync()
+  .then(function ()  {
+    app.listen(3000, function() {
+  console.log('Listening to port', PORT);
+  });
 });
+// var server = app.listen(3000, function() {
+//   console.log('Listening to port', server.address().port);
+// });
