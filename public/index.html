@@ -21,7 +21,13 @@
     </div>
     <div class="wrapper">
       <div class='column left'>Queue
-        <div class="cards">{{card}}</div>
+        <div class="cards" ng-repeat="card in cards">
+        <h2>{{card.title}}</h2>
+        <input type="text" ng-model="card.priority" placeholder="priority">
+        
+          
+     
+        </div>
       </div>
       <div class='column middle'>In Progress</div>
       <div class='column right'>Done</div>
@@ -31,10 +37,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
   <script src="/js/myApp.js" type="text/javascript"></script>
-  // <!-- <script src="/js/constants.js" type="text/javascript"></script> 
+   <!-- <script src="/js/constants.js" type="text/javascript"></script> 
   // <script src="/js/values.js" type="text/javascript"></script> -->
   <!-- // <script src="/js/factories.js" type="text/javascript"></script> -->
-  <!-- // <script src="/js/services.js" type="text/javascript"></script> -->
+  <script src="/js/services.js" type="text/javascript"></script>
   <!-- // <script src="/js/providers.js" type="text/javascript"></script> -->
   <script src="/js/controllers.js" type="text/javascript"></script>
   <!-- // <script src="/js/filters.js" type="text/javascript"></script> -->
