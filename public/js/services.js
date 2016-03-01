@@ -15,6 +15,11 @@ myApp.service('CardService', ['$http', function ($http) {
   };
 
   this.getCards = function () {
+    return cards;
+  };
+
+
+  this.getCards = function () {
     return $http({
       method:'GET',
       url: '/api'

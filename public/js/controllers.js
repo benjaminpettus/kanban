@@ -5,6 +5,7 @@ myApp.controller('CardController', [
   'CardService',
 
   function ($scope, CardService) {
+    $scope.CardService = CardService;
     CardService.getCards()
       .then(function (response) {
         $scope.cards = response.data;

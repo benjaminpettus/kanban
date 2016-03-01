@@ -3,12 +3,13 @@ angular.module('myApp', ['ngRoute']);
 var myApp = angular.module('myApp');
 
 myApp
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, CardsProvider) {
+    CardsProvider.setEndpoint('/api');
 
   $routeProvider
     .when('/',  {
-      templateUrl: 'index.html',
-      controller: 'CardController'
+      // templateUrl: 'index.html',
+      // controller: 'CardController'
     });
   })
     .run([
