@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp');
 
 
-
+//accesses database and returns and object to the controller
 myApp.service('CardService', ['$http', function ($http) {
 
   this.addCard = function(title, priority, created_by, assigned_to){

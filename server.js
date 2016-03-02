@@ -41,6 +41,29 @@ app.delete('/api/:id', function (req, res) {
   );
 });
 
+app.put('/api/:id', function (req, res) {
+  Kanban.find(
+      {where: {id: req.params.id}
+    })
+    .then(
+      Kanban.update(
+      {
+        title: req.body.title,
+        priority: req.body.priority,
+        created_by: req.body.created_by,
+        assigned_to: req.body.assigned_to
+      },
+      {
+      where: {id: req.params.id},
+        returning: true 
+      }
+    )
+    .then(function () {
+      res.json(req.body);
+    }));
+  });
+
+
 db.sequelize
   .sync()
   .then(function ()  {

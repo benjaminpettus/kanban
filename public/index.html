@@ -16,13 +16,13 @@
         <input type="text" ng-model="createdBy" placeholder="created by">
         <input type="text" ng-model="assignedTo"placeholder="assigned to">
         <button type="submit">Add Card</button>
-        
       </form>
     </div>
     <div class="wrapper">
       <div class='column left'>Queue
         <div class="cards" ng-repeat="card in cards">
         <h2>{{card.title}}</h2>
+        <p>{{card.assigned_to}}</p>
         <input type="text" ng-model="card.priority" placeholder="priority">
         
           
