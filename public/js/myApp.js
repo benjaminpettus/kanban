@@ -8,8 +8,8 @@ myApp
 
   $routeProvider
     .when('/',  {
-      // templateUrl: 'index.html',
-      // controller: 'CardController'
+      templateUrl: 'index.html',
+      controller: 'CardController'
     });
   })
     .run([

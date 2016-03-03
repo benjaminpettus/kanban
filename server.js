@@ -25,6 +25,7 @@ app.get('/api', function (req, res) {
 //saving a new card to database
 //input form will hit this route when add card is clicked
 app.post('/api', function (req, res) {
+  console.log(req.body);
   Kanban.create(req.body)
   .then(function (result) {
     res.json(req.body);
@@ -38,7 +39,10 @@ app.delete('/api/:id', function (req, res) {
       where:
         {id: parseInt(req.params.id)}
     }
-  );
+  )
+  .then(function (card){
+    res.json(card);
+  });
 });
 
 app.put('/api/:id', function (req, res) {

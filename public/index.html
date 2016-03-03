@@ -9,28 +9,34 @@
     {{"Kanban"}}
   </h1>
   <section>
-    <div id="add-card-form">
-      <form>
-        <input type="text" ng-model="title" placeholder="Title">
-        <input type="text" ng-model="priority" placeholder="priority">
-        <input type="text" ng-model="createdBy" placeholder="created by">
-        <input type="text" ng-model="assignedTo"placeholder="assigned to">
+  <!-- adding new cards/info to db -->
+    <div class="add-card-form">
+      <form method='POST' action="/api" ng-submit="saveCard($event)">
+        <input type="text" name="title" placeholder="Title">
+        <input type="text" name="priority" placeholder="priority">
+       <!--  <input type="text" name="created_by" placeholder="created by"> -->
+        <input type="text" name="created_by" placeholder="created by">
+        <input type="text" name="assigned_to" placeholder="assigned to">
         <button type="submit">Add Card</button>
       </form>
     </div>
+    <!-- columns -->
     <div class="wrapper">
       <div class='column left'>Queue
         <div class="cards" ng-repeat="card in cards">
         <h2>{{card.title}}</h2>
         <p>{{card.assigned_to}}</p>
+          <form method="POST" action="/api" ng-submit="removeCard($event, card.id)">
+            <button type="submit">Delete</button>
+          </form>
         <input type="text" ng-model="card.priority" placeholder="priority">
         
           
      
         </div>
       </div>
-      <div class='column middle'>In Progress</div>
-      <div class='column right'>Done</div>
+      <div class='column middle' drop-target="true">In Progress</div>
+      <div class='column right' drop-target="true">Done</div>
     </div>
   </section>
 

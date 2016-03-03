@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp');
 
 
-//accesses database and returns and object to the controller
+//accesses database and returns and object to the
 myApp.service('CardService', ['$http', function ($http) {
 
   this.addCard = function(title, priority, created_by, assigned_to){
@@ -26,4 +26,18 @@ myApp.service('CardService', ['$http', function ($http) {
     });
     
   };
+
+  this.saveCard = function (data) {
+   
+    console.log("saving", data);
+  }; 
+
+  this.removeCard = function (id) {
+    return $http.delete('api/' + id);
+  };
+    
+  
+    
+  
 }]);
+
