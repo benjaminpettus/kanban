@@ -12,10 +12,11 @@ var app = express();
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 //main page
-app.get('/api', function (req, res) {
+app.get('/api/cards', function (req, res) {
  Kanban.findAll()
   .then(function (result){
     res.json(result);
@@ -23,17 +24,17 @@ app.get('/api', function (req, res) {
 
 });
 //saving a new card to database
-//input form will hit this route when add card is clicked
-app.post('/api', function (req, res) {
+//input form will hit this route when add card is clicked()
+app.post('/api/cards', function (req, res) {
   console.log(req.body);
   Kanban.create(req.body)
   .then(function (result) {
-    res.json(req.body);
+    res.json(result);
     
   });
 });
 
-app.delete('/api/:id', function (req, res) {
+app.post('/api/cards/:id/delete', function (req, res) {
   Kanban.destroy(
     {
       where:
@@ -45,7 +46,7 @@ app.delete('/api/:id', function (req, res) {
   });
 });
 
-app.put('/api/:id', function (req, res) {
+app.put('/api/cards/:id', function (req, res) {
   Kanban.find(
       {where: {id: req.params.id}
     })
@@ -53,9 +54,10 @@ app.put('/api/:id', function (req, res) {
       Kanban.update(
       {
         title: req.body.title,
-        priority: req.body.priority,
-        created_by: req.body.created_by,
-        assigned_to: req.body.assigned_to
+        priority:     req.body.priority,
+        created_by:   req.body.created_by,
+        assigned_to:  req.body.assigned_to,
+        status:       req.body.status
       },
       {
       where: {id: req.params.id},

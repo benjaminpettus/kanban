@@ -1,0 +1,13 @@
+<h2>{{data.title}}</h2>
+<p>{{data.created_by}}</p>
+<p>{{data.assigned_to}}</p>
+<p>{{data.status}}</p>
+
+<input type="text" ng-model="card.priority" placeholder="priority">
+<form  ng-submit="removeCard(data.id)">
+  <button type="submit">Delete</button>
+</form>
+
+<form ng-submit="update($event)">
+  <button type='submit' name="inprogress">In Progress</button>
+</form>
