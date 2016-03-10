@@ -4,10 +4,15 @@ var myApp = angular.module('myApp');
 //accesses database and returns and object to the
 myApp.service('CardService', ['$http', function ($http) {
 
+  function CardService ($http) {
+    var cards = this.cards = [];
+  }
+
   this.addCard = function(data){
     return $http({
       method: 'POST',
-      url: '/api/cards'
+      url: '/api/cards',
+      data: data
   });
 };
 
@@ -25,11 +30,16 @@ myApp.service('CardService', ['$http', function ($http) {
       method:'POST',
       url: '/api/cards/' + id +'/delete'
     });
-  }
+  };
     
-  // this.update = function ($event) {
-  
-  // };
+  this.updateCard = function (id, data) { 
+    return $http({
+      method: 'PUT',
+      url: '/api/cards/' + id,
+      data: data
+
+    });
+  };
     
   
 }]);

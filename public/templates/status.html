@@ -7,7 +7,15 @@
 <form  ng-submit="removeCard(data.id)">
   <button type="submit">Delete</button>
 </form>
-
-<form ng-submit="update($event)">
-  <button type='submit' name="inprogress">In Progress</button>
+<form ng-hide="data.status === 'queue'" ng-submit="updateStatus(data.id, 'queue')">
+  <button type="submit">Queue</button>
 </form>
+
+<form ng-hide="data.status === 'in progress'" ng-submit="updateStatus(data.id, 'in progress')">
+  <button type="submit">In Progress</button>
+</form>
+<form ng-hide="data.status === 'done'" ng-submit="updateStatus(data.id, 'done')">
+  <button type="submit">Done</button>
+</form>
+
+

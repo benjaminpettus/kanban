@@ -9,7 +9,7 @@ myApp
   $routeProvider
     .when('/',  {
       templateUrl: 'index.html',
-     // controller: 'CardController'
+      controller: 'CardController'
     });
   })
     .run([
