@@ -28,35 +28,14 @@ myApp.controller('CardController', [
           return CardService.getCards();
         })  
        .then(function (response){
-         console.log(response.data);
+         // console.log(response.data);
           $scope.cards = response.data;
         })
        .catch(function (err) {
           console.log(err);
        });
-    }; 
-
-    // $scope.update = function ($event) {
-
-    // }
-
-    // $scope.updateStatus = function (id, status) {
-    //   card.Status = status;
-    //   Cards.updateStatus(id, status)
-    //     .then(function (response) {
-    //       Cards.getCards()
-    //       .then(function (response) {
-    //         $scope.cards = res.data;
-    //       });
-    //     });
-    // };
-
-
-  
-      
+    };     
   }
-
-    
 ])
 .directive('status', function() {
   return {
@@ -78,9 +57,6 @@ myApp.controller('CardController', [
             return $scope.$parent.$parent.cards = response.data;
           });
         });
-       
-        
-        
       };
 
       $scope.removeCard = function (id) {
@@ -100,6 +76,43 @@ myApp.controller('CardController', [
     ], 
     templateUrl: 'templates/status.html'
   };
+
+  myApp.controller('UserController', [
+    '$scope',
+    'UserService',
+    function ($scope, UserService) {
+      $scope.user = [];
+      $scope.UserService = UserService;
+      UserService.getUsers()
+        .then(function (response) {
+          $scope.user = response.data;
+        });
+        $scope.addUser = function (event)  {
+      event.preventDefault();
+      var newUser = {
+        first_name: event.target.firstName.value,
+        last_name:  event.target.lastName.value,
+        username:   event.target.username.value,
+        password:   event.target.password.value
+      };
+      
+      return UserService
+       .addUser(newUser)
+       .then(function () {
+          // console.log(newCard);
+          return UserService.getUsers();
+        })  
+       .then(function (response){
+         // console.log(response.data);
+          $scope.user = response.data;
+        })
+       .catch(function (err) {
+          console.log(err);
+       });
+    }; 
+
+    }
+  ]);
 
 });
 

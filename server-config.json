@@ -1,0 +1,6 @@
+{
+  "PORT": 3000,
+  "SESSION": {
+    "secret": "keyboard cat"
+  }
+}

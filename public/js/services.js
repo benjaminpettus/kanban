@@ -44,3 +44,18 @@ myApp.service('CardService', ['$http', function ($http) {
   
 }]);
 
+myApp.service('UserService', ['$http', function ($http) {
+  function UserService ($http) {
+    var users = this.users = [];
+  }
+
+  this.addUser = function (data) {
+    console.log()
+    return $http({
+      method: 'POST',
+      url: 'api/users',
+      data: data
+    });
+  };
+}]);
+

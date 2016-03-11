@@ -7,10 +7,11 @@ myApp
     CardsProvider.setEndpoint('/api');
 
   $routeProvider
-    .when('/',  {
+    .when('/cards',  {
       templateUrl: 'index.html',
       controller: 'CardController'
     });
+
   })
     .run([
       '$rootScope',

@@ -6,7 +6,7 @@
 </head>
 <body ng-app="myApp" ng-controller="CardController">
   <h1>
-    {{"Kanban"}}
+    {{"Kanbangular"}}
   </h1>
   <section>
   <!-- adding new cards/info to db -->
@@ -23,8 +23,8 @@
     <div class="wrapper">
 
       <div class='column left'>Queue
-        <div class="cards" ng-repeat="card in cards | filter: {'status':'queue'}">
-        <div>{{card.status}}</div>
+        <div class="cards" 
+             ng-repeat="card in cards | filter: {'status':'queue'}">
         <status card="card">
           <form ng-submit="update($event)">
             <button type="submit">
@@ -34,13 +34,15 @@
       </div>
 
       <div class='column middle'>In Progress
-        <div class="cards" ng-repeat="card in cards | filter: {'status':'in progress'}" >
+        <div class="cards" 
+             ng-repeat="card in cards | filter: {'status':'in progress'}" >
         <status card="card"></status>
         </div>
       </div>
 
       <div class='column right'>Done
-      <div class="cards" ng-repeat="card in cards | filter: {'status':'done'}" >
+      <div class="cards" 
+           ng-repeat="card in cards | filter: {'status':'done'}" >
         <status card="card"></status>
       </div>
       </div>

@@ -1,20 +1,26 @@
 <h2>{{data.title}}</h2>
-<p>{{data.created_by}}</p>
-<p>{{data.assigned_to}}</p>
-<p>{{data.status}}</p>
+<p>created by: {{data.created_by}}</p>
+<p>assigned to: {{data.assigned_to}}</p>
+<p>priority: {{data.priority}}</p>
 
-<input type="text" ng-model="card.priority" placeholder="priority">
 <form  ng-submit="removeCard(data.id)">
   <button type="submit">Delete</button>
 </form>
-<form ng-hide="data.status === 'queue'" ng-submit="updateStatus(data.id, 'queue')">
+
+<p>Status: {{data.status}}</p>
+
+<form ng-hide="data.status === 'queue'" 
+      ng-submit="updateStatus(data.id, 'queue')">
   <button type="submit">Queue</button>
 </form>
 
-<form ng-hide="data.status === 'in progress'" ng-submit="updateStatus(data.id, 'in progress')">
+<form ng-hide="data.status === 'in progress'" 
+      ng-submit="updateStatus(data.id, 'in progress')">
   <button type="submit">In Progress</button>
 </form>
-<form ng-hide="data.status === 'done'" ng-submit="updateStatus(data.id, 'done')">
+
+<form ng-hide="data.status === 'done'" 
+      ng-submit="updateStatus(data.id, 'done')">
   <button type="submit">Done</button>
 </form>
 
